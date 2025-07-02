@@ -8,9 +8,9 @@ class User {
     }
 
     public function create($data) {
-        $stmt = $this->db->prepare("INSERT INTO {$this->table} (email, password, role, name) VALUES (?, ?, ?, ?) ");
+        $stmt = $this->db->prepare("INSERT INTO {$this->table} (email, password, role, name, devzign_id) VALUES (?, ?, ?, ?, ?)");
         $password = password_hash($data['password'], PASSWORD_BCRYPT);
-        $stmt->bind_param('ssss', $data['email'], $password, $data['role'], $data['name']);
+        $stmt->bind_param('sssss', $data['email'], $password, $data['role'], $data['name'], $data['devzign_id']);
         return $stmt->execute();
     }
 
@@ -29,6 +29,6 @@ class User {
     }
 
     public function all() {
-        return $this->db->query("SELECT id, email, role, name FROM {$this->table}")->fetch_all(MYSQLI_ASSOC);
+        return $this->db->query("SELECT id, email, role, name, devzign_id FROM {$this->table}")->fetch_all(MYSQLI_ASSOC);
     }
 }
