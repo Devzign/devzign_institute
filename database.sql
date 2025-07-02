@@ -5,6 +5,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     role ENUM('admin','student','tutor','parent') NOT NULL,
     name VARCHAR(100) NOT NULL,
+    devzign_id VARCHAR(32) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

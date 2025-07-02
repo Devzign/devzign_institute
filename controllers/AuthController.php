@@ -14,8 +14,13 @@ class AuthController {
             return ['error' => 'Email already exists'];
         }
         $data['role'] = $data['role'] ?? 'student';
+        $data['devzign_id'] = uniqid('DZ');
         $this->user->create($data);
-        return ['success' => true];
+        return [
+            'success' => true,
+            'message' => 'Registration successful',
+            'devzign_id' => $data['devzign_id']
+        ];
     }
 
     public function login($email, $password) {

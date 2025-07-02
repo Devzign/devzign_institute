@@ -17,13 +17,14 @@ $users = $userModel->all();
 <body>
 <h1>Users</h1>
 <table border="1">
-<tr><th>ID</th><th>Email</th><th>Role</th><th>Name</th></tr>
+<tr><th>ID</th><th>Email</th><th>Role</th><th>Name</th><th>Devzign ID</th></tr>
 <?php foreach ($users as $u): ?>
 <tr>
 <td><?php echo $u['id']; ?></td>
 <td><?php echo htmlspecialchars($u['email']); ?></td>
 <td><?php echo $u['role']; ?></td>
 <td><?php echo htmlspecialchars($u['name']); ?></td>
+<td><?php echo htmlspecialchars($u['devzign_id']); ?></td>
 </tr>
 <?php endforeach; ?>
 </table>
