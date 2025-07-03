@@ -17,3 +17,11 @@ POST /api/index.php?path=auth/login
 GET  /api/index.php?path=courses
 ```
 The registration endpoint returns a JSON object including a `devzign_id` for the new user.
+
+### Customizing the Admin Template
+
+The admin area under `admin/` ships with minimal markup and styles in
+`assets/style.css`. Replace the HTML in `login.php` and `index.php` or
+modify the CSS file to integrate your own dashboard template. Any
+additional assets (CSS, JS, images) can be placed in the `assets/`
+directory and referenced from those pages.

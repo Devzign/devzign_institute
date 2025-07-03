@@ -8,6 +8,8 @@ $config = require __DIR__ . '/../config/config.php';
 $db = new Database($config);
 $userModel = new User($db->getConnection());
 
+// Simple admin login script. Replace the markup below with your own
+// template if desired by editing this file and `assets/style.css`.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $userModel->findByEmail($_POST['email']);
     if ($user && password_verify($_POST['password'], $user['password']) && $user['role'] === 'admin') {
@@ -20,13 +22,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html>
-<head><title>Admin Login</title></head>
-<body>
-<form method="post">
-    <input type="email" name="email" placeholder="Email" required><br>
-    <input type="password" name="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-</form>
-<?php if (isset($error)) echo '<p>' . $error . '</p>'; ?>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="login">
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <?php if (isset($error)) echo '<p class="error">' . htmlspecialchars($error) . '</p>'; ?>
+    <form method="post">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
 </body>
 </html>
