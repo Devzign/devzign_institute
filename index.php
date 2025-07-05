@@ -11,6 +11,6 @@ use Src\Controllers\DashboardController;
 $router = new Router();
 
 // 3) Use positional args (no named params) to match your Router::get signature
-$router->get('/', [DashboardController::class, 'index']);
+$router->get('/', [ DashboardController::class, 'index' ]);
 
 $router->run();
